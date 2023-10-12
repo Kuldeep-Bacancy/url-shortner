@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   root "links#index"
 
   resources :links
+  get "v/:id", to: "links#view", as: 'v'
 end

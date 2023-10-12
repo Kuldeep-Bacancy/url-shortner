@@ -1,4 +1,4 @@
 <div>
-  <p class="text-white">ID: <%= link_to link.encoded_id, link_path(link) %></p>
+  <p class="text-white">ID: <%= link_to link.encoded_id, link_path(link), data: { turbo: false } %></p>
   <p class="text-white">URL: <%= link.url %></p>
 </div>

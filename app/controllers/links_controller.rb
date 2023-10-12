@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: :show
+  before_action :set_link, only: [:show, :view]
 
   def index
     @pagy, @links = pagy(Link.latest)
@@ -16,6 +16,10 @@ class LinksController < ApplicationController
       @links = Link.latest
       render :index, status: :unprocessable_entity
     end
+  end
+
+  def view
+    redirect_to @link.url, allow_other_host: true
   end
 
   private
