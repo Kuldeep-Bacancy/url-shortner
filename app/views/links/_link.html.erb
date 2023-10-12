@@ -1,6 +1,10 @@
-<div data-controller="clipboard">
-  <p class="text-white"><b>Your URL:-</b><%= link.url %></p>
-  <button class="h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" value=<%= v_url(link.encoded_id) %> data-action="clipboard#copy" data-clipboard-target="source">
-    Copy Short URL
-  </button>
+<div class="flex flex-wrap -mx-3 mb-2" data-controller="clipboard">
+  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+    <p class="text-white link-url"><%= link.url%></p>
+  </div>
+  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+    <button class="h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" value=<%= v_url(link.encoded_id) %> data-action="clipboard#copy" data-clipboard-target="source">
+      Copy Short URL
+    </button>
+  </div>
 </div>
