@@ -1,2 +1,2 @@
-<% turbo_stream.prepend "links", partial: "link", locals: { link: @link }  %>
-<% turbo_stream.replace "link-form", partial: "form", locals: { link: Link.new } %>
+<%= turbo_stream.prepend "links", partial: "link", locals: { link: @link }  %>
+<%= turbo_stream.replace "link-form", partial: "form", locals: { link: Link.new } %>
