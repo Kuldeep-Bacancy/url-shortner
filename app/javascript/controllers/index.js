@@ -5,4 +5,9 @@
 import { application } from "./application"
 
 import HelloController from "./hello_controller"
+import ClipboardController from "./clipboard_controller"
+import RemovalController from "./removal_controller"
+
+application.register("clipboard", ClipboardController)
+application.register("removal", RemovalController)
 application.register("hello", HelloController)

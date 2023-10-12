@@ -9,12 +9,14 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(link_params)
-    if @link.valid?
-      @link.save!
-      redirect_to root_path
-    else
-      @links = Link.latest
-      render :index, status: :unprocessable_entity
+    respond_to do |format|
+      if @link.valid?
+        @link.save!
+        format.turbo_stream
+      else
+        @pagy, @links = pagy(Link.latest)
+        format.turbo_stream { render turbo_stream: turbo_stream.update('errors', partial: 'errors', locals: {link: @link})}
+      end
     end
   end
 

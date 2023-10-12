@@ -1,4 +1,6 @@
-<div>
-  <p class="text-white">ID: <%= link_to link.encoded_id, link_path(link), data: { turbo: false } %></p>
-  <p class="text-white">URL: <%= link.url %></p>
+<div data-controller="clipboard">
+  <p class="text-white"><b>Your URL:-</b><%= link.url %></p>
+  <button class="h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" value=<%= v_url(link.encoded_id) %> data-action="clipboard#copy" data-clipboard-target="source">
+    Copy Short URL
+  </button>
 </div>
