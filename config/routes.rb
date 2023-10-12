@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   resources :links
   get "v/:id", to: "links#view", as: 'v'
+  get "/search", to: "links#search"
 end

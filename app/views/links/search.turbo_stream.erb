@@ -1,0 +1,12 @@
+<%= turbo_stream.update "links", class: 'mt-5' do %>
+  <% if @links.exists? %>
+    <% @links.each do |link| %>
+      <%= render "link", link: link %>
+    <% end %>
+    <div class="mt-5">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  <% else %>
+    <span class="text-white">No links found!</span>
+  <% end %>
+<% end %>
