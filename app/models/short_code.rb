@@ -17,7 +17,7 @@ class ShortCode
   def self.decode(string)
     result = 0
     
-    string.reverse.each_char.with_index do |char, index|
+    string.to_s.reverse.each_char.with_index do |char, index|
       power = BASE ** index
       index = ALPHABET.index(char)
       result +=  index * power
