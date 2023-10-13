@@ -5,7 +5,7 @@ export default class extends Controller {
   searchLink(){
     const searchTerm = this.element.value;
     
-    get(`/search?link[search]=${searchTerm}`, {
+    get(`/?q=${searchTerm}`, {
       responseKind: "turbo-stream"
     })
   }

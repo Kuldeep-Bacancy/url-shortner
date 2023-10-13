@@ -2,7 +2,8 @@ class LinksController < ApplicationController
   before_action :set_link, only: [:show, :view]
 
   def index
-    @pagy, @links = pagy(Link.latest)
+    links = params[:q].present? ? Link.where("url LIKE :search", search: "%#{params[:q]}%") : Link.latest
+    @pagy, @links = pagy(links)
   end
 
   def show; end
@@ -24,15 +25,10 @@ class LinksController < ApplicationController
     redirect_to @link.url, allow_other_host: true
   end
 
-  def search
-    links = Link.where("url LIKE :search", search: "%#{link_params[:search]}%")
-    @pagy, @links = pagy(links)
-  end
-
   private
 
   def link_params
-    params.require(:link).permit(:url, :search)
+    params.require(:link).permit(:url)
   end
 
   def set_link
