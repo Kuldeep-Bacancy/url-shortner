@@ -9,8 +9,7 @@
 
 
 set :rails_env, 'production'
-set :puma_env, fetch(:rack_env, fetch(:rails_env, 'production'))
-server '13.126.230.2', user: 'ubuntu', roles: %w{web app db}
+server '13.233.55.131', user: 'ubuntu', roles: %w{web app db}
 set :ssh_options, {
   keys: %w(~/.ssh/kuldeep_github),
   forward_agent: true,
