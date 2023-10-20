@@ -4,6 +4,8 @@ class Link < ApplicationRecord
 
   scope :latest, -> { order(created_at: :desc) }
 
+  after_create :run_test_job
+
   def encoded_id
     ShortCode.encode(id)
   end
@@ -19,5 +21,10 @@ class Link < ApplicationRecord
     unless url.match(url_regex)
       errors.add(:url, 'is not a valid URL')
     end
+  end
+
+  def run_test_job
+    p "-----------------JOB ENQUEUD---------------"
+    TestJob.set(wait: 1.minutes).perform_later
   end
 end
