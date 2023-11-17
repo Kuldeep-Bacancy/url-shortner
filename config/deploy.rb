@@ -1,13 +1,13 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.17.3"
+lock '~> 3.17.3'
 
-set :application, 'url_shortner' #your app name
+set :application, 'url_shortner' # your app name
 set :repo_url, 'git@github.com:Kuldeep-Bacancy/url-shortner.git' # Edit this to match your repository
 set :branch, 'main'
 set :deploy_to, '/home/ubuntu/url_shortner'
 set :pty, true
-set :linked_files, %w{config/database.yml config/master.key} #if rails 5.2 & above master.key is used instead of application.yml
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
+set :linked_files, %w[config/database.yml config/master.key] # if rails 5.2 & above master.key is used instead of application.yml
+set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads]
 set :keep_releases, 5
 
 # Default branch is :master

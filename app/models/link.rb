@@ -17,14 +17,14 @@ class Link < ApplicationRecord
   private
 
   def validate_url
-    url_regex = /\Ahttps?:\/\/[\S]+\z/i
-    unless url.match(url_regex)
-      errors.add(:url, 'is not a valid URL')
-    end
+    url_regex = %r{\Ahttps?://\S+\z}i
+    return if url.match(url_regex)
+
+    errors.add(:url, 'is not a valid URL')
   end
 
   def run_test_job
-    p "-----------------JOB ENQUEUD---------------"
+    p '-----------------JOB ENQUEUD---------------'
     TestJob.set(wait: 1.minutes).perform_later
   end
 end

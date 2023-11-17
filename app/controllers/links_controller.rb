@@ -1,8 +1,8 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: [:show, :view]
+  before_action :set_link, only: %i[show view]
 
   def index
-    links = params[:q].present? ? Link.where("url LIKE :search", search: "%#{params[:q]}%") : Link.latest
+    links = params[:q].present? ? Link.where('url LIKE :search', search: "%#{params[:q]}%") : Link.latest
     @pagy, @links = pagy(links)
   end
 
@@ -16,7 +16,9 @@ class LinksController < ApplicationController
         format.turbo_stream
       else
         @pagy, @links = pagy(Link.latest)
-        format.turbo_stream { render turbo_stream: turbo_stream.update('errors', partial: 'errors', locals: {link: @link})}
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update('errors', partial: 'errors', locals: { link: @link })
+        end
       end
     end
   end
